@@ -1,0 +1,19 @@
+{
+  "name": "06-img-processing-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omar214/image-processing-API.git"
+  },
+  "author": "Omar Mohamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omar214/image-processing-API/issues"
+  },
+  "homepage": "https://github.com/omar214/image-processing-API#readme"
+}
