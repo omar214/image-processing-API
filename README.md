@@ -3,8 +3,8 @@
 ## TODOs
 
 - [x] configute TS
-- [ ] configute prettier
-- [ ] configute ESLint
+- [x] configute prettier
+- [x] configute ESLint
 - [ ] api route
 - [ ] controller
 - [ ] test
