@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "npm run test"
+    "build": "tsc",
+    "test": "npm run test",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/omar214/image-processing-API/issues"
   },
-  "homepage": "https://github.com/omar214/image-processing-API#readme"
+  "homepage": "https://github.com/omar214/image-processing-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.3",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
 }
