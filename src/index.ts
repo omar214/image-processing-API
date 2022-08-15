@@ -1,20 +1,47 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import morgan from 'morgan';
 import dotenv from 'dotenv';
-import a from './api/index.routes';
 
 dotenv.config();
-
 const app = express();
-const port = process.env.PORT;
 
-app.get('/', (req, res) => {
-	res.send('Express + TypeScript Server');
+// import routes
+import allRoutes from './api/index.routes';
+import responseError from './types/Error';
+
+// Middlewares
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+app.use(express.urlencoded({ extended: true })); // send nested objects
+app.use(express.json());
+
+// listen to port
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
+console.log(`Server running on port ${PORT}`);
+
+// Routes which should handle requests
+app.use('/api', allRoutes);
+
+// handle errors
+app.use(
+  (err: responseError, req: Request, res: Response, next: NextFunction) => {
+    const status = err.status || 500;
+    const message = err.message || 'Something went wrong!';
+    return res.status(status).json({
+      success: false,
+      status,
+      message,
+    });
+  }
+);
+
+// handle not found routes
+app.use('*', (req, res) => {
+  res.status(404);
+  res.json({
+    error: { message: 'Not found' },
+  });
 });
-
-app.listen(port, () => {
-	console.log(`[server]: Server is running at https://localhost:${port}`);
-});
-
-console.log('Hello World');
-console.log(a());
-console.log('Hello World');
+export default app;
