@@ -1,13 +1,8 @@
 import { Router } from 'express';
+import validateRequest from '../middlewares/validateRequest';
+import resizeContoller from './controllers/imageController';
 const router = Router();
 
-// import controllers
-
-router.get('/image', async (req, res, next) => {
-  const { image, width, height } = req.query;
-  console.log(image, width, height);
-
-  res.send('images');
-});
+router.get('/image', validateRequest, resizeContoller);
 
 export default router;
