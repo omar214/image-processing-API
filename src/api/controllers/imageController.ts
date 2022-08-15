@@ -5,7 +5,7 @@ const resizeContoller = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const { imageName, width, height } = req.query;
 
   try {

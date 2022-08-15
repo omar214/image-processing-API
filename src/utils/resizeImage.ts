@@ -2,7 +2,11 @@ import { existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const resize = async (imageName: string, width: number, height: number) => {
+const resize = async (
+  imageName: string,
+  width: number,
+  height: number
+): Promise<string> => {
   try {
     const newImageName = `${imageName}_${width}_${height}.jpg`;
     const currentImagePath = path.join(

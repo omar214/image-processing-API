@@ -3,8 +3,13 @@ import { existsSync } from 'fs';
 import path from 'path';
 import createError from '../utils/error';
 
-const validateRequest = (req: Request, res: Response, next: NextFunction) => {
+const validateRequest = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const { imageName, width, height } = req.query;
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!imageName || !width || !height)
     return next(createError(400, 'missing parameters in query'));
 
@@ -14,7 +19,7 @@ const validateRequest = (req: Request, res: Response, next: NextFunction) => {
     '..',
     'public',
     'images',
-    `${imageName}.jpg`
+    `${imageName as string}.jpg`
   );
   if (!existsSync(imagePath)) return next(createError(404, 'Image not found'));
 

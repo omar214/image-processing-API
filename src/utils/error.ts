@@ -1,6 +1,6 @@
 import responseError from '../types/Error';
 
-const createError = (status: number, message: string) => {
+const createError = (status: number, message: string): responseError => {
   const err: responseError = new Error();
   err.status = status;
   err.message = message;

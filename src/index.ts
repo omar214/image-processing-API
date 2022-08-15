@@ -3,11 +3,11 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import responseError from './types/Error';
 
-dotenv.config();
-const app = express();
-
 // import routes
 import allRoutes from './api/index.routes';
+
+dotenv.config();
+const app = express();
 
 // Middlewares
 if (process.env.NODE_ENV === 'development') {
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true })); // send nested objects
 app.use(express.static('public')); // serve static files
 
 // listen to port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ?? 3000;
 app.listen(PORT);
 console.log(`Server running on port ${PORT}`);
 
@@ -27,8 +27,8 @@ app.use('/api', allRoutes);
 // handle errors
 app.use(
   (err: responseError, req: Request, res: Response, next: NextFunction) => {
-    const status = err.status || 500;
-    const message = err.message || 'Something went wrong!';
+    const status = err.status ?? 500;
+    const message = err.message ?? 'Something went wrong!';
     return res.status(status).json({
       success: false,
       status,
