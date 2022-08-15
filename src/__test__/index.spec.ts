@@ -53,3 +53,14 @@ describe('sending good requests', () => {
     expect(response.status).toBe(200);
   });
 });
+
+describe('un used routes', () => {
+  it('should return 404 when make request to unavailable route', async () => {
+    const response: Response = await request.get(
+      '/api/video'
+    );
+
+    expect(response.status).toBe(404);
+  });
+
+});

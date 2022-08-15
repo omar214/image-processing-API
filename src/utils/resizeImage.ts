@@ -31,9 +31,9 @@ const resize = async (imageName: string, width: number, height: number) => {
     await sharp(currentImagePath).resize(width, height).toFile(newImagePath);
     return newImagePath;
   } catch (error) {
-    console.log('error inside resize');
-    console.log(error);
-    throw error;
+    // console.log('error inside resize');
+    // console.log(error);
+    throw new Error('Error while resizing image');
     // return error;
   }
 };
