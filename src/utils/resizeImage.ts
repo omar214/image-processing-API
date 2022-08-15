@@ -1,4 +1,4 @@
-import { existsSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
@@ -24,11 +24,15 @@ const resize = async (imageName: string, width: number, height: number) => {
     // handle cached images
     if (existsSync(newImagePath)) return newImagePath;
 
+    // create the cached directory if it doesn't exist
+    if (!existsSync(path.dirname(newImagePath)))
+      mkdirSync(path.dirname(newImagePath));
+
     await sharp(currentImagePath).resize(width, height).toFile(newImagePath);
     return newImagePath;
   } catch (error) {
-    console.log(error);
     console.log('error inside resize');
+    console.log(error);
     throw error;
     // return error;
   }

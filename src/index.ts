@@ -1,13 +1,13 @@
 import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import responseError from './types/Error';
 
 dotenv.config();
 const app = express();
 
 // import routes
 import allRoutes from './api/index.routes';
-import responseError from './types/Error';
 
 // Middlewares
 if (process.env.NODE_ENV === 'development') {

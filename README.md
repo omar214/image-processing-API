@@ -17,4 +17,6 @@
   - [x] if not first time send the cached image
 
 - [x] send the file 
+- [x] handle if cached file is not found
+- [ ] status code 304 when image is not changed
 - [ ] test
