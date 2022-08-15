@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 app.use(express.urlencoded({ extended: true })); // send nested objects
-app.use(express.json());
+app.use(express.static('public')); // serve static files
 
 // listen to port
 const PORT = process.env.PORT || 3000;
