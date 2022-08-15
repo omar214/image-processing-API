@@ -8,17 +8,22 @@ it's a simple image processing API that can be used to process images.
 
 ## 🏁Scripts <a name = "Scripts"></a>
 
-- to compile ts files `npm run build`
-- to run the test `npm run test`
-- to start the server `npm run start`
-- to start development `npm run dev`
-- to run prettier `npm run format`
-- to run the linter `npm run lint`
-- to run the linter to fix `npm run lint:fix`
+- `npm run build` to compile ts files
+- `npm run test` to run the test
+- `npm run start` to start the server
+- `npm run dev` to start development
+- `npm run format` to run prettier
+- `npm run lint` to run the linter
+- `npm run lint:fix` to run the linter to fix
 
 ## API <a name = "API"></a>
 
-`{baseURL}/api/image?fileName=<image Name>&&width=<width>&&height=<height>`
+`{baseURL}/api/image?imageName=<image Name>&&width=<width>&&height=<height>`
+
+query parameters:
+**imageName**: the name of the image
+**width**: the width of the image
+**height**: the height of the image
 
 ## 🏁Getting Started <a name = "start"></a>
 
@@ -74,7 +79,7 @@ npm start
 - [x] handle if cached file is not found
 - [x] configure jasmine
 - [x] add tests
-- [ ] status code 304 when image is not changed
+- [ ] status code 304 when image is cached
 
 - [x] lint
 - [x] format
