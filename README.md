@@ -5,6 +5,16 @@
 - [x] configute TS
 - [x] configute prettier
 - [x] configute ESLint
-- [ ] api route
-- [ ] controller
+- [x] api route
+
+  - [x] validate request
+  - [x] validate is image exists
+  - [x] do resize logic
+  - [x] handle path better way
+
+- [x] do cache logic
+  - [x] if 1st time do resize
+  - [x] if not first time send the cached image
+
+- [x] send the file 
 - [ ] test
