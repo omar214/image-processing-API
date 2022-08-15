@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { existsSync } from 'fs';
+import path from 'path';
 import createError from '../utils/error';
 
 const validateRequest = (req: Request, res: Response, next: NextFunction) => {
@@ -7,8 +8,15 @@ const validateRequest = (req: Request, res: Response, next: NextFunction) => {
   if (!imageName || !width || !height)
     return next(createError(400, 'missing parameters in query'));
 
-  if (!existsSync(`${__dirname}/../images/${imageName}.jpg`))
-    return next(createError(404, 'Image not found'));
+  const imagePath = path.join(
+    __dirname,
+    '..',
+    '..',
+    'public',
+    'images',
+    `${imageName}.jpg`
+  );
+  if (!existsSync(imagePath)) return next(createError(404, 'Image not found'));
 
   // validate width and height
   if (!Number.isInteger(Number(width)) || !Number.isInteger(Number(height)))
