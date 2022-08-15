@@ -56,11 +56,8 @@ describe('sending good requests', () => {
 
 describe('un used routes', () => {
   it('should return 404 when make request to unavailable route', async () => {
-    const response: Response = await request.get(
-      '/api/video'
-    );
+    const response: Response = await request.get('/api/video');
 
     expect(response.status).toBe(404);
   });
-
 });
